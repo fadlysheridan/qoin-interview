@@ -1,0 +1,94 @@
+Rancangan db aplikasi rumah makan
+
+aplikasi dibuat menggunakan web based dengan teknologi php framework laravel dengan pertimbangan cost yang dikeluarkan untuk development lebih murah dibanding menggunakan mobile based berbasis aplikasi dan juga lebih cepat pengerjaannya. dengan flow. pelayan tulis manual di kertas orderan beserta nomer tablenya sesuai menu yang dipilih pelanggan, lalu kasir input kedalam aplikasi dengan table seperti berikut
+
+|---------------------------------------------|
+|                 masterdata_user             |
+|---------------------------------------------|
+| rowid        | int           | PRIMARY KEY |
+| username     | varchar(50)   |             |
+| password     | varchar(50)   |             |
+| nama         | varchar(100)  |             |
+| nomer_telpon | varchar(15)   |             |
+| role         | varchar(20)   |             |
+|---------------------------------------------|
+
+|---------------------------------------------|
+|               masterdata_menu              |
+|---------------------------------------------|
+| rowid      | int           | PRIMARY KEY   |
+| nama_menu  | varchar(100)  |               |
+| jenis_menu | varchar(10)   |               |
+| harga      | int           |               |
+| stok       | int           |               |
+|---------------------------------------------|
+
+|---------------------------------------------|
+|                    order                    |
+|---------------------------------------------|
+| rowid         | int           | PRIMARY KEY |
+| id_menu       | int           |             |
+| quantity      | int           |             |
+| harga         | int           |             |
+| total_harga   | int           |             |
+| orderdate     | date          |             |
+| platform      | varchar(20)   |             |
+| table_number  | int           |             |
+|---------------------------------------------|
+
+|---------------------------------------------|
+|                   invoice                   |
+|---------------------------------------------|
+| rowid          | int           | PRIMARY KEY |
+| nomer_invoice  | varchar(20)   |             |
+| harga          | int           |             |
+| pajak          | int           |             |
+| servis         | int           |             |
+| total          | int           |             |
+| tanggal        | date          |             |
+| nama_kasir    | varchar(100)  |             |
+| userid         | int           |             |
+|---------------------------------------------|
+
+
+1. masterdata user
+rowid
+username
+password
+nama
+nomer_telpon
+role
+
+2. masterdata menu (makanan / minuman)
+rowid
+nama_menu
+makanan / minuman
+harga
+stok
+
+3. order
+rowid
+id_menu
+quantity
+harga
+total_harga
+orderdate
+platform (DINEIN / ONLINE GOFOOD , GRAB , SHOPPE )
+table_number (diisi apabila dinein)
+
+4. invoice
+rowid
+nomer_invoice
+harga
+pajak
+servis
+total
+tanggal
+nama_kasir / userid 
+
+
+1. Struk pembelian bisa diambil dari table invoice
+2. Laporan penghasilan bulanan / mingguan didapet dari table order
+3. Laporan stok bisa didapat dari masterdata menu
+4. Apabila ada order otomatis mengurangi stok masterdata menu
+
